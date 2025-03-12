@@ -23,7 +23,7 @@ class CombinedEngineer():
         
         res_X = self.res_engineer.updateTestRestaurants(X)
         new_X = self.user_engineer.updateTestUsers(res_X)
-        new_X = new_X.drop(columns=["user_id", "prod_id"], errors="ignore")
+        new_X = new_X.drop(columns=["user_id", "prod_id", "review"], errors="ignore")
         return new_X
     
     def fit_transform(self, X, y=None):
