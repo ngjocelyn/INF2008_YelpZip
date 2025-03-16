@@ -74,7 +74,7 @@ class RestaurantEngineer():
         new_X.fillna({
             "total_reviews_for_restaurant": 0,
             "avg_rating_for_restaurant": self.train_features["avg_rating_for_restaurant"].median(),
-            "std_dev_rating_for_restaurant": self.train_features["std_dev_rating_for_restaurant"].median(),
+            "std_dev_rating_for_restaurant": self.train_features["std_dev_rating_for_restaurant"].mean(),
             "median_rating_for_restaurant": self.train_features["median_rating_for_restaurant"].median(),
             "review_frequency_for_restaurant": 0,
             "extreme_rating_index": self.train_features["extreme_rating_index"].median(),

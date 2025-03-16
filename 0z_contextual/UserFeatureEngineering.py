@@ -73,16 +73,16 @@ class UserEngineer():
 
         # Define default values if there are users that do not exist in the train dataset
         new_X.fillna({
-            "rating_mean": 3.0,
-            "rating_min": 3.0,
-            "rating_max": 3.0,
-            "rating_std": 0.0,
+            "rating_mean": self.train_features["rating_mean"].mean(),
+            "rating_std": self.train_features["rating_std"].median(),
+            "rating_min": self.train_features["rating_mean"].mean() - self.train_features["rating_std"].median(),
+            "rating_max": self.train_features["rating_mean"].mean() + self.train_features["rating_std"].median(),
             "user_earliest": new_X['date'],
             "user_latest": new_X['date'],
-            "user_days_active": 0,
-            "user_review_timespan": 1,
-            "users_avg_per_day": 0.0,
-            "user_active_percentage": 0.0,
+            "user_days_active": self.train_features["user_days_active"].median(),
+            "user_review_timespan": self.train_features["user_review_timespan"].median(),
+            "users_avg_per_day": self.train_features["users_avg_per_day"].median(),
+            "user_active_percentage": self.train_features["user_active_percentage"].median(),
             "user_restaurants_reviewed": 0,
         }, inplace=True)
         int_cols = ["user_earliest", "user_latest", "user_restaurants_reviewed", "user_review_timespan", "user_days_active"]
